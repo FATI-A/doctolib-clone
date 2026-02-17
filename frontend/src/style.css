@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  background-color: #f8fafc; /* slate-50 */
+}
+
+body {
+  margin: 0;
+  display: block; /* On enlève le flex centré de Vite */
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+#app {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: left; /* On enlève le center de Vite */
+}

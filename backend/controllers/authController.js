@@ -41,9 +41,21 @@ exports.login = async (req, res) => {
 
 exports.getDoctors = async (req, res) => {
   try {
-    const { city } = req.query;
-    const filter = city ? { city: new RegExp(city, 'i') } : {};
+    const { city, specialty } = req.query;
+    
+    let filter = {};
+
+    if (city && city.trim() !== "") {
+      filter.city = new RegExp(city, 'i');
+    }
+
+    if (specialty && specialty.trim() !== "") {
+      filter.specialty = new RegExp(specialty, 'i');
+    }
+
     const doctors = await Doctor.find(filter).select('-password');
     res.json(doctors);
-  } catch (err) { res.status(500).json({ error: "Erreur récupération docteurs" }); }
+  } catch (err) { 
+    res.status(500).json({ error: "Erreur récupération docteurs" }); 
+  }
 };
